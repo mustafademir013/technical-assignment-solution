@@ -1,0 +1,12 @@
+version: v1alpha1
+machine:
+  type: worker
+  network:
+    hostname: talos-worker-1
+cluster:
+  network:
+    cni:
+      name: flannel
+  controlPlane:
+    endpoint: https://10.0.0.1:6443
+  clusterName: talos-cluster 

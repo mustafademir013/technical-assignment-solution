@@ -1,0 +1,24 @@
+[Unit]
+Description=Node.js Express Application
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=myapp
+Group=myapp
+WorkingDirectory=/opt/myapp
+Environment="NODE_ENV=production"
+ExecStart=/usr/bin/node app.js
+Restart=always
+RestartSec=3
+StandardOutput=append:/var/log/myapp/app.log
+StandardError=append:/var/log/myapp/error.log
+LimitNOFILE=65535
+TimeoutStartSec=30
+TimeoutStopSec=30
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target 
