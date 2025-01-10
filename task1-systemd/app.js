@@ -1,10 +1,10 @@
-const express = require('express');
-const winston = require('winston');
-const fs = require('fs');
-const path = require('path');
+import express from 'express';
+import winston from 'winston';
+import fs from 'fs';
+import path from 'path';
 
 // Create log directory
-const logDir = '/var/log/myapp';
+const logDir = path.join(process.cwd(), 'logs');
 if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true });
 }
@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     res.send('Hello, World!');
 });
 
-// Error handling middleware eklenebilir
+// Error handling middleware
 app.use((err, req, res, next) => {
     logger.error('Error occurred:', err);
     res.status(500).json({ error: 'Internal Server Error' });
