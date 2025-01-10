@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodejs-app
+  name: myapp-deployment
   labels:
-    app: nodejs-app
+    app: myapp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nodejs-app
+      app: myapp
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -17,11 +17,11 @@ spec:
   template:
     metadata:
       labels:
-        app: nodejs-app
+        app: myapp
     spec:
       containers:
-      - name: nodejs-app
-        image: nodejs-app:latest
+      - name: myapp
+        image: mustafademir013/myapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
