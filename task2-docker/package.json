@@ -1,0 +1,16 @@
+{
+    "name": "task2-docker-app",
+    "version": "1.0.1",
+    "description": "Docker-based application",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "winston": "^3.11.0"
+    },
+    "author": "Mustafa Demir",
+    "license": "ISC",
+    "type": "module"
+  }

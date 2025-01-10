@@ -47,3 +47,13 @@ This task containerizes the Node.js application and implements load balancing us
    ```bash
    curl http://localhost/health
    ```
+2. Close the services:
+   ```bash
+   docker-compose down
+   ```
+## Test Results
+   | Environment | Test Status |
+   |--------------|-------------|
+   | Orbstack On MacOs | ✅ Success |
+   
+   
