@@ -5,6 +5,29 @@ set -e
 
 echo "Starting Node.js application installation..."
 
+# Function to install Node.js
+install_node() {
+    if command -v apt-get &> /dev/null; then
+        # For Debian/Ubuntu
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+    elif command -v dnf &> /dev/null; then
+        # For Fedora
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+        sudo dnf install -y nodejs
+    elif command -v yum &> /dev/null; then
+        # For CentOS/RHEL
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+        sudo yum install -y nodejs
+    elif command -v pacman &> /dev/null; then
+        # For Arch Linux
+        sudo pacman -Syu nodejs npm
+    else
+        echo "Unsupported package manager. Please install Node.js manually."
+        exit 1
+    fi
+}
+
 # Create required directories
 sudo mkdir -p /opt/myapp
 sudo mkdir -p /var/log/myapp
@@ -13,10 +36,9 @@ sudo mkdir -p /opt/myapp/logs  # Log dizini
 # Create system user
 sudo useradd -r -s /bin/false myapp || echo "User already exists"
 
-# Install Node.js 20 if not present
+# Install Node.js
 if ! command -v node &> /dev/null; then
-    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+    install_node
 fi
 
 # Create package.json
