@@ -22,6 +22,18 @@ This task containerizes the Node.js application and implements load balancing us
 - Health check integration
 - SSL/TLS setup (optional)
 
+### app.js
+- Express.js web server
+- Health check endpoint
+- Winston logging integration
+- Automatic log directory creation
+
+### package.json
+- Node.js package configuration
+- Application dependencies
+- Script definitions
+- Project metadata
+
 ## Deployment Steps
 ### Prerequisites
 - Docker
